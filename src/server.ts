@@ -15,6 +15,8 @@ app.use(cors());
 app.use(express.json());
 
 // Rotas
+app.get("/", (_, res) => res.json({ message: "Welcome to the Tracking API" }));
+app.get("/api", (_, res) => res.json({ message: "API is running" }));
 app.use("/api", trackRoutes);
 
 const PORT = process.env.PORT || 3000;
