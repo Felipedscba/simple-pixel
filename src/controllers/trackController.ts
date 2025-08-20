@@ -13,7 +13,7 @@ export async function track(req: Request, res: Response) {
         const track = await Track.create({
             domain,
             path,
-            query: queryParams ? JSON.stringify(queryParams) : null,
+            query: queryParams || null,
             customPayload: customPayload || null
         });
         res.status(201).json(track);
@@ -41,6 +41,7 @@ export async function getTracks(req: Request, res: Response) {
 
         res.json({
             page,
+            totalPages: Math.ceil(count / limit),
             total: count,
             data: rows
         });

@@ -2,9 +2,11 @@ import { Umzug, SequelizeStorage } from "umzug";
 import { sequelize } from "./src/config/database.js";
 
 const umzug = new Umzug({
-    migrations: { glob: "src/migrations/*.ts" },
+    migrations: {
+        glob: "src/migrations/*.ts"
+    },
     context: sequelize.getQueryInterface(),
-    storage: new SequelizeStorage({ sequelize }),
+    storage: new SequelizeStorage({ sequelize, timestamps: true }),
     logger: console
 });
 
